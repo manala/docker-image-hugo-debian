@@ -22,6 +22,19 @@ help:
 	} \
 	{ lastLine = $$0 }' $(MAKEFILE_LIST)
 
+#######
+# Dev #
+#######
+
+## Dev
+dev:
+	docker run \
+		--rm \
+		--volume `pwd`:/srv \
+		--tty --interactive \
+		manala/hugo-debian \
+		/bin/bash
+
 #########
 # Build #
 #########
@@ -35,19 +48,6 @@ build:
 		--no-cache \
 		--tag manala/hugo-debian \
 		.
-
-########
-# Test #
-########
-
-## Test
-test:
-	docker run \
-		--rm \
-		--volume `pwd`:/srv \
-		--tty -i \
-		manala/hugo-debian \
-		/bin/bash
 
 ########
 # Push #
