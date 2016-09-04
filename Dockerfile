@@ -17,7 +17,12 @@ EXPOSE 1313
 # Node
 ADD https://deb.nodesource.com/setup_${NODE_VERSION}.x node
 RUN bash node \
-    && DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y install nodejs
+    && DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y install \
+      nodejs \
+      optipng \
+      imagemagick \
+      libjpeg-turbo-progs \
+      python3-pygments
 
 # Clean
 RUN rm -rf * /var/lib/apt/lists/*
