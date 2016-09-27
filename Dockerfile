@@ -22,9 +22,11 @@ RUN bash node \
       optipng \
       imagemagick \
       libjpeg-turbo-progs \
-      python3-pygments
+      python3-pygments \
+      python-pip
 
 # Clean
+RUN pip install Pygments
 RUN rm -rf * /var/lib/apt/lists/*
 
 WORKDIR /srv
