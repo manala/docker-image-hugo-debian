@@ -2,15 +2,14 @@ FROM debian:jessie
 
 MAINTAINER Manala <contact@manala.io>
 
-ENV HUGO_VERSION          0.16
-ENV HUGO_VERSION_REVISION 1
-
-ENV NODE_VERSION 6
+ENV HUGO_VERSION           0.17
+#ENV HUGO_VERSION_REVISION 1
+ENV NODE_VERSION           6
 
 WORKDIR /tmp
 
 # Hugo
-ADD https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}${HUGO_VERSION_REVISION:+-${HUGO_VERSION_REVISION}}_amd64.deb hugo.deb
+ADD https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}${HUGO_VERSION_REVISION:+-${HUGO_VERSION_REVISION}}-64bit.deb hugo.deb
 RUN dpkg -i hugo.deb
 EXPOSE 1313
 
@@ -22,11 +21,9 @@ RUN bash node \
       optipng \
       imagemagick \
       libjpeg-turbo-progs \
-      python3-pygments \
-      python-pip
+      python-pygments
 
 # Clean
-RUN pip install Pygments
 RUN rm -rf * /var/lib/apt/lists/*
 
 WORKDIR /srv
