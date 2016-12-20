@@ -2,7 +2,7 @@ FROM debian:jessie
 
 MAINTAINER Manala <contact@manala.io>
 
-ENV HUGO_VERSION           0.17
+ENV HUGO_VERSION           0.18
 #ENV HUGO_VERSION_REVISION 1
 ENV NODE_VERSION           6
 
