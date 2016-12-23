@@ -9,7 +9,7 @@ ENV NODE_VERSION 6
 WORKDIR /tmp
 
 # Download and install Hugo
-ADD https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}${HUGO_VERSION_REVISION:+-${HUGO_VERSION_REVISION}}-64bit.deb /tmp/hugo.deb
+ADD https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY} hugo.deb
 RUN dpkg -i hugo.deb \
     && rm hugo.deb
 
@@ -17,7 +17,6 @@ RUN dpkg -i hugo.deb \
 ADD https://deb.nodesource.com/setup_${NODE_VERSION}.x node
 
 RUN bash node \
-    && apt-get update -qq \
     && DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y install \
       ca-certificates \
       nodejs \
