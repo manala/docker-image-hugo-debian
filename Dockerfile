@@ -3,13 +3,12 @@ FROM debian:jessie
 MAINTAINER Manala <contact@manala.io>
 
 ENV HUGO_VERSION 0.18
-ENV HUGO_BINARY hugo_${HUGO_VERSION}-64bit.deb
 ENV NODE_VERSION 7
 
 WORKDIR /tmp
 
 # Download and install Hugo
-ADD https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY} hugo.deb
+ADD https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}-64bit.deb hugo.deb
 RUN dpkg -i hugo.deb \
     && rm hugo.deb
 
