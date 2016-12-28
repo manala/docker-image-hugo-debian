@@ -14,9 +14,9 @@ RUN dpkg -i hugo.deb \
     && rm hugo.deb
 
 # Node
-ADD https://deb.nodesource.com/setup_${NODE_VERSION}.x node
+ADD https://deb.nodesource.com/setup_${NODE_VERSION}.x setup_node
 
-RUN bash node \
+RUN bash setup_node \
     && DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y install \
       ca-certificates \
       nodejs \
